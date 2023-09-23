@@ -1,0 +1,32 @@
+.start_buttons{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: auto;
+    padding-top:1em;
+    padding-bottom: 1em;
+    border-radius: 5%;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 50%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.start_buttons:hover{
+    background-color: darkgreen;
+}
+#start_menu{
+    position: static;
+    margin-top: 35%;
+}
+#welcome{
+    text-align: center;
+    margin-top: 10%;
+}
+
