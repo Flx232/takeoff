@@ -1,0 +1,25 @@
+.start_buttons{
+    background-color: #04AA6D; /* Green background */
+    border: 1px solid green; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px;
+    text-align: center;
+    margin:auto;
+    font-size: 100%;
+    width: 50%;
+    height: 50%;
+    display: block;
+    border-radius: 8%;
+    margin-bottom: 5px; 
+}
+
+.start_buttons:hover{
+    background-color: darkgreen;
+}
+#start_menu{
+    margin-top: 25%;
+    margin-bottom: 25%;
+    padding: 70px 0;
+    border: 3px solid green;
+    text-align: center;
+}
