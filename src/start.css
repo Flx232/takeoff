@@ -1,18 +1,4 @@
 .start_buttons{
-<<<<<<< Updated upstream
-    background-color: #04AA6D; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px;
-    text-align: center;
-    margin:auto;
-    font-size: 100%;
-    width: 50%;
-    height: 50%;
-    display: block;
-    border-radius: 8%;
-    margin-bottom: 5px; 
-=======
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -30,21 +16,12 @@
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
->>>>>>> Stashed changes
 }
 
 .start_buttons:hover{
     background-color: darkgreen;
 }
 #start_menu{
-<<<<<<< Updated upstream
-    margin-top: 25%;
-    margin-bottom: 25%;
-    padding: 70px 0;
-    border: 3px solid green;
-    text-align: center;
-}
-=======
     position: static;
     margin-top: 35%;
 }
@@ -52,5 +29,3 @@
     text-align: center;
     margin-top: 10%;
 }
-
->>>>>>> Stashed changes
