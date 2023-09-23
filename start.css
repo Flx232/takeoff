@@ -12,6 +12,7 @@
     font-size: 16px;
     margin: 4px 2px;
     width: 50%;
+    height: 50%;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
@@ -22,5 +23,9 @@
 }
 #start_menu{
     position: static;
-    margin-top: 25%;
+    margin-top: 35%;
+}
+#welcome{
+    text-align: center;
+    margin-top: 10%;
 }
