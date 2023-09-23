@@ -1,30 +1,23 @@
-@keyframes fall {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(100vh); }
+#game{
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border: 1px solid black;
 }
 
-body {
-    overflow: hidden; /* Hide scrollbars */
-    background: black; /* Dark background for contrast */
-}
-
-#meteor-shower::before, #meteor-shower::after {
-    content: "";
+#player{
     position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    background: red;
-    box-shadow: 
-        50vw 50vh 20px 10px red,
-        70vw 30vh 20px 10px red,
-        30vw 70vh 20px 10px red,
-        80vw 20vh 20px 10px red,
-        20vw 80vh 20px 10px red,
-        /* Add more meteors */
-        40vw 60vh 20px 10px red,
-        60vw 40vh 20px 10px red,
-        90vw 10vh 20px 10px red,
-        10vw 90vh 20px 10px red;
-    animation: fall linear infinite;
-}
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    }
+
+    .enemy {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background-color: red;
+    }
+    
+
