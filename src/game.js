@@ -2,14 +2,21 @@ var game = document.getElementById('game');
 var player = document.getElementById('player');
 var scoreElement = document.getElementById('score');
 var score = 0;
+var prevScore = 0;
 
 function createEnemy() {
     var enemy = document.createElement('div');
+    var enemy_speed_mult = 1;
     enemy.classList.add('enemy');
     enemy.style.left = Math.random() * 350 + 'px';
     game.appendChild(enemy);
 
-    var speed = Math.random() * 2 + 1;
+    var speed = Math.random() * 2 * enemy_speed_mult + 1;
+    if (score == prevScore + 10)
+    {
+        enemy_speed_mult += 1;
+        prevScore = score;
+    }
 
     function step() {
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
