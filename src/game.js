@@ -50,7 +50,9 @@ function createEnemy() {
             if (!isColliding(player, enemy)) {
                 requestAnimationFrame(step);
             } else {
+                player_speed = 0;
                 lose = true;
+                return;
             }
         }
         if (score >= prevScore + 15)
@@ -70,6 +72,7 @@ function createEnemy() {
         step();
     }else{
         on();
+        player_speed = 0;
         enemy.remove();
         star.remove();
         return;
