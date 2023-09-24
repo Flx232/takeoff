@@ -14,7 +14,7 @@ body {
 /* Style for the play button */
 #play-button {
     position: fixed;
-    bottom: 40%;
+    bottom: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 20px 40px; /* Increased padding to make the button bigger */
@@ -71,4 +71,40 @@ height: 1000px; /* Set the height of the rocket */
     border-radius: 100%;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px; 
+  background-color: #ff4b5c;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
 
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

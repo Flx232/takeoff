@@ -26,9 +26,9 @@ function createEnemy() {
     // game.appendChild(star);
   
     // Varying size based on the current score
-    var enemySize = (Math.random() * 20) + 100; // Adjust the size range as needed
-    enemy.style.width = enemySize + 'px';
-    enemy.style.height = 'auto';
+    var enemySize = (Math.random() * 20) + 10; // Adjust the size range as needed
+    enemy.style.width = enemySize + '%';
+    enemy.style.height = enemy.style.width;
 
     // Varying speed based on the current score 
     var enemyLeft = Math.random() * (game.offsetWidth - enemySize);
@@ -108,10 +108,10 @@ function isColliding(div1, div2) {
     var rect1 = div1.getBoundingClientRect();
     var rect2 = div2.getBoundingClientRect();
 
-    return !(rect1.right < rect2.left+50 ||
-             rect1.left > rect2.right-50 ||
-             rect1.bottom < rect2.top-50 ||
-             rect1.top > rect2.bottom-15);
+    return !(rect1.right < rect2.left+rect2.left*0.15 ||
+             rect1.left > rect2.right-rect2.right*0.15 ||
+             rect1.bottom < rect2.top+rect2.top*0.15 ||
+             rect1.top > rect2.bottom-rect2.bottom*0.15);
 }
 
 window.addEventListener('keydown', function(event) {
