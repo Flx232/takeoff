@@ -16,15 +16,29 @@
 #player {
     position: absolute;
     bottom: 0;
-    width: 18px;
-    height: 18px;
-    background-color: blue;
+    width: 20px;
+    height: 20px;
+    background-color: lightgray;
+}
+
+#score_cnt{
+    margin-left:10px;
+    color:white;
+
+}
 
 .enemy {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     background-color: red;
+}
+
+.star {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background-color: white;
 }
 
 #overlay {
