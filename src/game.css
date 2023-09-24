@@ -22,7 +22,7 @@ body{
 #player {
     position: absolute;
     bottom: 0;
-    width:150px;
+    width:100px;
     height:150px;
 }
 

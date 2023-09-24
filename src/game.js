@@ -10,7 +10,7 @@ var lose = false;
 var eIntervalId;
 var sIntervalId;
 var spawn = 1000;
-var player_speed = 2.5;
+var player_speed = 5;
 
 function createEnemy() {
     var enemy = document.createElement('img');
@@ -20,14 +20,25 @@ function createEnemy() {
     game.appendChild(enemy);
     
     // Varying size based on the current score
-    var enemySize = (Math.random() * 20) + 10; // Adjust the size range as needed
+    var enemySize = (Math.random() * 6)+4; // Adjust the size range as needed
     enemy.style.width = enemySize + '%';
     enemy.style.height = enemy.style.width;
 
     // Varying speed based on the current score 
     var enemyLeft = Math.random() * (game.offsetWidth - enemySize);
     enemy.style.left = enemyLeft + 'px';
-    
+    if (score >= prevScore + 5)
+            {
+                prevScore = score;
+                level++;
+                levelElement.textContent = "LEVEL: " + level;
+                enemy_speed_mult += 15;
+                // star_speed_mult += 2;
+                clearInterval(eIntervalId);
+                eIntervalId = null;
+                eIntervalId = setInterval(createEnemy,spawn - 25 * (level -1));
+            }
+
     function step() {
         var speed = Math.random() * 2 * enemy_speed_mult + 1;
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
@@ -45,17 +56,6 @@ function createEnemy() {
                 return;
             }
         }
-        if (score >= prevScore + 15)
-            {
-                prevScore = score;
-                level++;
-                levelElement.textContent = "LEVEL: " + level;
-                enemy_speed_mult += 8;
-                // star_speed_mult += 2;
-                clearInterval(eIntervalId);
-                eIntervalId = null;
-                eIntervalId = setInterval(createEnemy,spawn - 25 * (level -1));
-            }
     }
  
     if(!lose){
@@ -96,17 +96,17 @@ function isColliding(div1, div2) {
     var rect1 = div1.getBoundingClientRect();
     var rect2 = div2.getBoundingClientRect();
 
-    return !(rect1.right < rect2.left+rect2.left*0.15 ||
-             rect1.left > rect2.right-rect2.right*0.15 ||
-             rect1.bottom < rect2.top+rect2.top*0.15 ||
-             rect1.top > rect2.bottom-rect2.bottom*0.15);
+    return !(rect1.right < rect2.left ||
+             rect1.left > rect2.right ||
+             rect1.bottom < rect2.top ||
+             rect1.top > rect2.bottom);
 }
 
 window.addEventListener('keydown', function(event) {
     if (event.key === 'ArrowLeft') {
-        speed = -2.5;  // Move left
-    } else if (event.key === 'ArrowRight') {
-        speed = 2.5;  // Move right
+        speed = -player_speed;  // Move left
+    } else if (event.key === 'ArrowRight') {    
+        speed = player_speed;  // Move right
     }
 });
 
