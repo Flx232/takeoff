@@ -3,13 +3,24 @@ var script = document.createElement('script');
 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+// Audio elements
+var music = new Audio('Game Menu audio.wav');
+music.loop = true;
+
 // Wait for the anime.js library to load
 window.onload = function() {
     // Set focus to the window
     window.focus();
 
+    // Start the music
+    music.play();
+
     // Add event listener for the play button
     document.addEventListener('click', function(event) {
+        // Stop the music
+        music.pause();
+        music.currentTime = 0;
+
         // Animate the rocket
         anime({
             targets: '#rocket',
@@ -31,6 +42,8 @@ window.onload = function() {
                         window.location.href = 'game.html';
                     }else if(event.target && event.target.id === 'about-button'){
                         window.location.href = 'about.html';
+                    }else{
+                        location.reload();
                     }
                 }, 2000);
             }
