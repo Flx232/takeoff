@@ -1,0 +1,60 @@
+/* Style for the body */
+body {
+    background: url('takeoff.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
+/* Style for the welcome message */
+#welcome-message {
+    margin-top: 20%;
+    font-size: 2em;
+}
+
+/* Style for the play button */
+#play-button {
+    position: fixed;
+    bottom: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px; /* Increased padding to make the button bigger */
+    background-color: #ff4b5c;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    animation: pulse 2s infinite; /* Add a pulsing animation */
+}
+
+/* Pulsing animation for the play button */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Style for the rocket image */
+#rocket {
+    position: fixed;
+    bottom: -1000px; /* Start off screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px; /* Set the width of the rocket */
+height: 1000px; /* Set the height of the rocket */
+}
+
+/* Style for the smoke particles */
+.smoke-particle {
+    position: absolute;
+    bottom: 0; /* Start at the bottom of the smoke container */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 100%;
+}
+
+

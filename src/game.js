@@ -111,6 +111,7 @@ function isColliding(div1, div2) {
 }
 
 window.addEventListener('keydown', function(event) {
+
     var left = player.offsetLeft; // Change this value to make the player move faster or slower
 
     if (event.key === 'ArrowLeft') {
@@ -132,4 +133,4 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-animate()
+animate();
