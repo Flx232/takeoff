@@ -9,16 +9,20 @@
             <p id="level-text">LEVEL: <span id="level-value">1</span></p>
         </div>
         <div id="game">
+            <p id="score_cnt">Score:  <span id="score">0</span></p>
             <div id="player"></div>
         </div>
-        <p id="score">Score: <span id="score-value">0</span></p>
     </div>
     <script src="game.js"></script>
     <div id="overlay">
         <div class="modal">
-            <div class="modal-text"><h1><strong>Game Over</strong></h1></div>
+            <div class="modal-text">
+                <h1><strong>Game Over</strong></h1>
+                <h2><strong>Score: <span id="modal-score"></span></span></strong></h2>
+                <h3><strong>Level: <span id="modal-level-value"></span></strong></h3>
+            </div>
             <a style="text-decoration:none"></a>
-            <button class="button" onclick="retart()">Restart</button>
+            <button id="restart" class="button" onclick="restart()">Restart</button>
         </div>
     </div>
 </body>
