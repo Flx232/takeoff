@@ -43,6 +43,10 @@ window.onload = function() {
                     }else if(event.target && event.target.id === 'about-button'){
                         window.location.href = 'about.html';
                     }
+
+                    else {
+                        location.reload();
+                    }
                 }, 2000);
             }
         });
