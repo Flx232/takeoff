@@ -26,6 +26,20 @@ body {
     animation: pulse 2s infinite; /* Add a pulsing animation */
 }
 
+#about-button {
+  position: fixed;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px; 
+  background-color: #ff4b5c;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
 /* Pulsing animation for the play button */
 @keyframes pulse {
   0% {

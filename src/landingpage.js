@@ -9,7 +9,7 @@ window.onload = function() {
     window.focus();
 
     // Add event listener for the play button
-    document.getElementById('play-button').addEventListener('click', function() {
+    document.addEventListener('click', function(event) {
         // Animate the rocket
         anime({
             targets: '#rocket',
@@ -27,7 +27,11 @@ window.onload = function() {
 
                 // Wait for the fade out animation to finish before redirecting
                 setTimeout(function() {
-                    window.location.href = 'game.html';
+                    if(event.target && event.target.id === 'play-button'){
+                        window.location.href = 'game.html';
+                    }else{
+                        window.location.href = 'about.html';
+                    }
                 }, 2000);
             }
         });
