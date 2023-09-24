@@ -1,12 +1,19 @@
-#game{
+#game-container {
     position: relative;
-    height: 400px;
+    text-align: center; /* Center-align its children (game and score) */
+    margin-top: 5%;
+}
+
+#game {
+    position: relative;
+    height: 600px;
     width: 400px;
     background-color: black;
     border: 1px solid black;
+    margin: 0 auto; /* Center the game container horizontally */
 }
 
-#player{
+#player {
     position: absolute;
     bottom: 0;
     width: 20px;
@@ -79,3 +86,17 @@
     cursor: pointer;
   }
 
+#score {
+    text-align: center;
+    margin-top: 10px; /* Add some space between the game and the score */
+}
+
+#score-value {
+    font-weight: bold; /* Optional: Make the score value bold */
+}
+#level-text {
+    font-size: large;
+}
+#level-value {
+    font-weight: bold;
+}
