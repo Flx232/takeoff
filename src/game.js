@@ -6,30 +6,6 @@ var prevScore = 0;
 var lose = false;
 var eIntervalId;
 var sIntervalId;
-function createStar(){
-    var star = document.createElement('div');
-    var star_speed_mult = 1;
-    star.classList.add('star');
-    star.style.left = Math.random() * 350 + 'px';
-    game.appendChild(enemy);
-    var speed = Math.random() * 1 * star_speed_mult + 1;
-    if (score == prevScore + 10)
-    {
-        star_speed_mult += 1;
-        prevScore = score;
-    }
-
-    function starStep() {
-        star.style.top = (star.offsetTop + speed) + 'px';
-        requestAnimationFrame(starStep);
-    }
-    if(!lose){
-        starStep();
-    }else{
-        star.remove();
-        return;
-    }
-}
 
 function createEnemy() {
     var enemy = document.createElement('div');
@@ -38,32 +14,56 @@ function createEnemy() {
     enemy.style.left = Math.random() * 350 + 'px';
     game.appendChild(enemy);
 
-    var speed = Math.random() * 2 * enemy_speed_mult + 1;
-    if (score == prevScore + 10)
-    {
-        enemy_speed_mult += 1;
-        prevScore = score;
-    }
+    var star = document.createElement('div');
+    var star_speed_mult = 1;
+    star.classList.add('star');
+    star.style.left = Math.random() * 350 + 'px';
+    game.appendChild(star);
 
+    var speed = Math.random() * 2 * enemy_speed_mult + 1;
+    var starSpeed = Math.random() * 1 * star_speed_mult + 1;
+
+    
+    if (score === prevScore + 10){
+        enemy_speed_mult += 1;
+        flashtext();
+        star_speed_mult += 1;
+    }
+    
     function step() {
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
+        star.style.top = (star.offsetTop + starSpeed) + 'px';
         if(!lose){
             if (enemy.offsetTop > game.offsetHeight) {
                 enemy.remove();
                 score++;
                 scoreElement.textContent = score;
-            } else if (!isColliding(player, enemy)) {
-            requestAnimationFrame(step);
+            }
+            if(star.offsetTop > game.offsetHeight){
+                star.remove();
+            }
+            if (!isColliding(player, enemy)) {
+                requestAnimationFrame(step);
             } else {
                 lose = true;
             }
         }
     }
+
+    function flashtext() {
+        var tmpColCheck = document.getElementById('score_cnt').style.color;
+        if (tmpColCheck === 'white') {
+            document.getElementById('score_cnt').style.color = 'red';
+        } else {
+            document.getElementById('score_cnt').style.color = 'white';
+        }
+    } 
     if(!lose){
         step();
     }else{
         on();
         enemy.remove();
+        star.remove();
         return;
     }
 }
@@ -74,7 +74,6 @@ if(lose){
     sIntervalId = null;
 }else{
     eIntervalId = setInterval(createEnemy,500);
-    sIntervalId = setInterval(createStar, 500);
 }
 
 function on() {
@@ -82,9 +81,9 @@ function on() {
 }
 
 function restart(){
-    off();
     lose=false;
-    location.reload();
+    off();
+    window.location.reload();
 }
   
 function off() {
