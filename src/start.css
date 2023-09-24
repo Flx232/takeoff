@@ -1,25 +1,58 @@
 .start_buttons{
-    background-color: #04AA6D; /* Green background */
-    border: 1px solid green; /* Green border */
-    color: white; /* White text */
-    padding: 10px 24px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: auto;
+    padding-top:1em;
+    padding-bottom: 1em;
+    border-radius: 5%;
     text-align: center;
-    margin:auto;
-    font-size: 100%;
-    width: 50%;
-    height: 50%;
+    text-decoration: none;
     display: block;
-    border-radius: 8%;
-    margin-bottom: 5px; 
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 30%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
 }
 
 .start_buttons:hover{
     background-color: darkgreen;
 }
 #start_menu{
-    margin-top: 25%;
-    margin-bottom: 25%;
-    padding: 70px 0;
-    border: 3px solid green;
-    text-align: center;
+    position: static;
+    margin-top: 35%;
 }
+#welcome{
+    text-align: center;
+    margin-top: 10%;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

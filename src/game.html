@@ -4,10 +4,26 @@
     <link rel="stylesheet" type="text/css" href="game.css">
 </head>
 <body>
-    <div id="game">
-        <div id="player"></div>
+    <div id="game-container">
+        <div id="level-Up">
+            <p id="level-text">LEVEL: <span id="level-value">1</span></p>
+        </div>
+        <div id="game">
+            <p id="score_cnt">Score:  <span id="score">0</span></p>
+            <div id="player"></div>
+        </div>
     </div>
-    <p>Score: <span id="score">0</span></p>
     <script src="game.js"></script>
+    <div id="overlay">
+        <div class="modal">
+            <div class="modal-text">
+                <h1><strong>Game Over</strong></h1>
+                <h2><strong>Score: <span id="modal-score"></span></span></strong></h2>
+                <h3><strong>Level: <span id="modal-level-value"></span></strong></h3>
+            </div>
+            <a style="text-decoration:none"></a>
+            <button id="restart" class="button" onclick="restart()">Restart</button>
+        </div>
+    </div>
 </body>
 </html>
