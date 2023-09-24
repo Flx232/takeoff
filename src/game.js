@@ -4,7 +4,7 @@ var scoreElement = document.getElementById('score');
 var levelElement = document.getElementById('level-text');
 var level = 1;
 var score = 0;
-var speed = 0;
+var speed = 0.0;
 var prevScore = 0;
 var lose = false;
 var eIntervalId;
@@ -115,13 +115,10 @@ function isColliding(div1, div2) {
 }
 
 window.addEventListener('keydown', function(event) {
-
-    var left = player.offsetLeft; // Change this value to make the player move faster or slower
-
     if (event.key === 'ArrowLeft') {
-        player.style.left = Math.max(left - player_speed, 0) + 'px';  // Move left
+        speed = -2.5;  // Move left
     } else if (event.key === 'ArrowRight') {
-        player.style.left = Math.min(left + player_speed, game.offsetWidth - player.offsetWidth) + 'px';  // Move right
+        speed = 2.5;  // Move right
     }
 });
 
@@ -131,7 +128,7 @@ window.addEventListener('keyup', function(event) {
     }
 });
 
-function animate() {
+function animate() { //animate function
     var left = player.offsetLeft;
     player.style.left = Math.max(Math.min(left + speed, game.offsetWidth - player.offsetWidth), 0) + 'px';
     requestAnimationFrame(animate);
