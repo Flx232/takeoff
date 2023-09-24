@@ -13,21 +13,22 @@ var spawn = 1000;
 var player_speed = 2.5;
 
 function createEnemy() {
-    var enemy = document.createElement('div');
+    var enemy = document.createElement('img');
     var enemy_speed_mult = star_speed_mult = 1;
+    enemy.src='asteroid2.png';
     enemy.classList.add('enemy');
     game.appendChild(enemy);
 
-    var star = document.createElement('div');
-    var star_speed_mult = 1;
-    star.classList.add('star');
-    star.style.left = Math.random() * 350 + 'px';
-    game.appendChild(star);
+    // var star = document.createElement('div');
+    // var star_speed_mult = 1;
+    // star.classList.add('star');
+    // star.style.left = Math.random() * 350 + 'px';
+    // game.appendChild(star);
   
     // Varying size based on the current score
-    var enemySize = (Math.random() * 20) + 25; // Adjust the size range as needed
+    var enemySize = (Math.random() * 20) + 100; // Adjust the size range as needed
     enemy.style.width = enemySize + 'px';
-    enemy.style.height = enemySize + 'px';
+    enemy.style.height = 'auto';
 
     // Varying speed based on the current score 
     var enemyLeft = Math.random() * (game.offsetWidth - enemySize);
@@ -35,13 +36,13 @@ function createEnemy() {
     
     function step() {
         var speed = Math.random() * 2 * enemy_speed_mult + 1;
-        var starSpeed = Math.random() * 1 * star_speed_mult + 1;
+        // var starSpeed = Math.random() * 1 * star_speed_mult + 1;
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
-        star.style.top = (star.offsetTop + starSpeed) + 'px';
+        // star.style.top = (star.offsetTop + starSpeed) + 'px';
         if(!lose){
-            if(star.offsetTop > game.offsetHeight){
-                star.remove();
-            }
+            // if(star.offsetTop > game.offsetHeight){
+            //     star.remove();
+            // }
             if (enemy.offsetTop > game.offsetHeight) {
                 enemy.remove();
                 score++;
@@ -61,7 +62,7 @@ function createEnemy() {
                 level++;
                 levelElement.textContent = "LEVEL: " + level;
                 enemy_speed_mult += 8;
-                star_speed_mult += 2;
+                // star_speed_mult += 2;
                 clearInterval(eIntervalId);
                 eIntervalId = null;
                 eIntervalId = setInterval(createEnemy,spawn - 25 * (level -1));
@@ -74,7 +75,7 @@ function createEnemy() {
         on();
         player_speed = 0;
         enemy.remove();
-        star.remove();
+        // star.remove();
         return;
     }
 }
@@ -107,10 +108,10 @@ function isColliding(div1, div2) {
     var rect1 = div1.getBoundingClientRect();
     var rect2 = div2.getBoundingClientRect();
 
-    return !(rect1.right < rect2.left ||
-             rect1.left > rect2.right ||
-             rect1.bottom < rect2.top ||
-             rect1.top > rect2.bottom);
+    return !(rect1.right < rect2.left+50 ||
+             rect1.left > rect2.right-50 ||
+             rect1.bottom < rect2.top-50 ||
+             rect1.top > rect2.bottom-15);
 }
 
 window.addEventListener('keydown', function(event) {
