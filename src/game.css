@@ -1,23 +1,43 @@
-#game{
+#game-container {
     position: relative;
-    height: 400px;
-    width: 400px;
-    border: 1px solid black;
+    text-align: center; /* Center-align its children (game and score) */
+    margin-top: 5%;
 }
 
-#player{
+#game {
+    position: relative;
+    height: 600px;
+    width: 400px;
+    border: 1px solid black;
+    margin: 0 auto; /* Center the game container horizontally */
+}
+
+#player {
     position: absolute;
     bottom: 0;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     background-color: blue;
-    }
+}
 
-    .enemy {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: red;
-    }
-    
+.enemy {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+}
 
+#score {
+    text-align: center;
+    margin-top: 10px; /* Add some space between the game and the score */
+}
+
+#score-value {
+    font-weight: bold; /* Optional: Make the score value bold */
+}
+#level-text {
+    font-size: large;
+}
+#level-value {
+    font-weight: bold;
+}
