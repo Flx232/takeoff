@@ -12,6 +12,14 @@ var sIntervalId;
 var spawn = 1000;
 var player_speed = 5;
 
+// Audio elements
+var mainMusic = new Audio('In-Game audio.wav');
+var gameMusic = new Audio('Game Menu audio.wav');
+var gameOverMusic = new Audio('Game Over audio.wav');
+
+mainMusic.loop = true;
+gameMusic.loop = true;
+
 function createEnemy() {
     var enemy = document.createElement('img');
     var enemy_speed_mult = star_speed_mult = 1;
@@ -77,49 +85,79 @@ if(lose){
 }
 
 function on() {
+    mainMusic.pause();
+    gameMusic.currentTime = 0;
+    gameOverMusic.play();
+    
     document.getElementById('modal-level-value').textContent = level;
     document.getElementById('modal-score').textContent = score;
+    
     document.getElementById("overlay").style.display = "block";
 }
 
+
+
 function restart(){
+    gameOverMusic.pause();
+    gameOverMusic.currentTime = 0;
+
+    gameMusic.play();
+
     lose=false;
+
     off();
+
     window.location.reload();
 }
   
 function off() {
+    gameOverMusic.pause();
+    
+    gameOverMusic.currentTime = 0;
+
     document.getElementById("overlay").style.display = "none";
 } 
 
 function isColliding(div1, div2) {
     var rect1 = div1.getBoundingClientRect();
-    var rect2 = div2.getBoundingClientRect();
+    
+     var rect2 =
+     div2.getBoundingClientRect();
 
-    return !(rect1.right < rect2.left ||
+     return !(rect1.right < rect2.left ||
              rect1.left > rect2.right ||
              rect1.bottom < rect2.top ||
              rect1.top > rect2.bottom);
 }
 
 window.addEventListener('keydown', function(event) {
-    if (event.key === 'ArrowLeft') {
-        speed = -player_speed;  // Move left
-    } else if (event.key === 'ArrowRight') {    
-        speed = player_speed;  // Move right
-    }
+     if (event.key === 'ArrowLeft') {
+         speed =
+         -player_speed; // Move left
+     } else if (event.key === 'ArrowRight') {    
+         speed =
+         player_speed; // Move right
+     }
 });
 
 window.addEventListener('keyup', function(event) {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        speed = 0;  // Stop moving when key is released
-    }
+     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+         speed =
+         0; // Stop moving when key is released
+     }
 });
 
 function animate() { //animate function
-    var left = player.offsetLeft;
-    player.style.left = Math.max(Math.min(left + speed, game.offsetWidth - player.offsetWidth), 0) + 'px';
-    requestAnimationFrame(animate);
+     var left =
+     player.offsetLeft;
+
+     player.style.left =
+     Math.max(Math.min(left + speed, game.offsetWidth - player.offsetWidth), 0) + 'px';
+
+     requestAnimationFrame(animate);
 }
 
 animate();
+
+// Start the main music
+mainMusic.play();
