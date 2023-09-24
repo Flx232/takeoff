@@ -87,7 +87,7 @@ if(lose){
 function on() {
     mainMusic.pause();
     gameMusic.currentTime = 0;
-    gameOverMusic.play();
+    gameOverMusic.play();//something
     
     document.getElementById('modal-level-value').textContent = level;
     document.getElementById('modal-score').textContent = score;
