@@ -18,13 +18,7 @@ function createEnemy() {
     enemy.src='asteroid2.png';
     enemy.classList.add('enemy');
     game.appendChild(enemy);
-
-    // var star = document.createElement('div');
-    // var star_speed_mult = 1;
-    // star.classList.add('star');
-    // star.style.left = Math.random() * 350 + 'px';
-    // game.appendChild(star);
-  
+    
     // Varying size based on the current score
     var enemySize = (Math.random() * 20) + 10; // Adjust the size range as needed
     enemy.style.width = enemySize + '%';
@@ -36,13 +30,8 @@ function createEnemy() {
     
     function step() {
         var speed = Math.random() * 2 * enemy_speed_mult + 1;
-        // var starSpeed = Math.random() * 1 * star_speed_mult + 1;
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
-        // star.style.top = (star.offsetTop + starSpeed) + 'px';
         if(!lose){
-            // if(star.offsetTop > game.offsetHeight){
-            //     star.remove();
-            // }
             if (enemy.offsetTop > game.offsetHeight) {
                 enemy.remove();
                 score++;
@@ -75,7 +64,6 @@ function createEnemy() {
         on();
         player_speed = 0;
         enemy.remove();
-        // star.remove();
         return;
     }
 }
