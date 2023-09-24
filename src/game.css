@@ -22,8 +22,8 @@ body{
 #player {
     position: absolute;
     bottom: 0;
-    width:100px;
-    height:auto;
+    width:150px;
+    height:150px;
 }
 
 #score_cnt{

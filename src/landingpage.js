@@ -29,17 +29,12 @@ window.onload = function() {
                 setTimeout(function() {
                     if(event.target && event.target.id === 'play-button'){
                         window.location.href = 'game.html';
-                    }else{
+                    }else if(event.target && event.target.id === 'about-button'){
                         window.location.href = 'about.html';
                     }
                 }, 2000);
             }
         });
-    });
-
-    // Add event listener for the restart button
-    document.getElementById('restart-button').addEventListener('click', function() {
-        location.reload();
     });
 };
 
