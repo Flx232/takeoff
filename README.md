@@ -5,10 +5,7 @@
 ## It is your responsibility to dodge as many meteors as you can and try to escape out of this storm intact and alive 😬
 # It is time to Take Off!! 🚀
 
-# Languages:
-- html5
-- css
-- js
+# Girl Hacks 2023
 
 # Collaborators:
 - Frank Xu
@@ -16,4 +13,9 @@
 - Eric Zhang
 - David Huang
 
-# Girl Hacks 2023
+# Languages:
+- html5
+- css
+- js
+
+## There was an attempt at project management...
