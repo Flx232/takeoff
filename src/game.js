@@ -2,6 +2,7 @@ var game = document.getElementById('game');
 var player = document.getElementById('player');
 var scoreElement = document.getElementById('score');
 var score = 0;
+var speed = 0;
 
 function createEnemy() {
     var enemy = document.createElement('div');
@@ -41,12 +42,23 @@ function isColliding(div1, div2) {
 setInterval(createEnemy, 1000);
 
 window.addEventListener('keydown', function(event) {
-    var left = player.offsetLeft;
-    var speed = 10;  // Change this value to make the player move faster or slower
-
     if (event.key === 'ArrowLeft') {
-        player.style.left = Math.max(left - speed, 0) + 'px';  // Move left
+        speed = -10;  // Move left
     } else if (event.key === 'ArrowRight') {
-        player.style.left = Math.min(left + speed, game.offsetWidth - player.offsetWidth) + 'px';  // Move right
+        speed = 10;  // Move right
     }
 });
+
+window.addEventListener('keyup', function(event) {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        speed = 0;  // Stop moving when key is released
+    }
+});
+
+function animate() { //animate function
+    var left = player.offsetLeft;
+    player.style.left = Math.max(Math.min(left + speed, game.offsetWidth - player.offsetWidth), 0) + 'px';
+    requestAnimationFrame(animate);
+}
+
+animate();
