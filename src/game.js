@@ -4,7 +4,7 @@ var scoreElement = document.getElementById('score');
 var levelElement = document.getElementById('level-text');
 var level = 1;
 var score = 0;
-var speed = 0;
+var speed = 0.0;
 var prevScore = 0;
 var lose = false;
 var eIntervalId;
@@ -26,9 +26,9 @@ function createEnemy() {
     // game.appendChild(star);
   
     // Varying size based on the current score
-    var enemySize = (Math.random() * 20) + 100; // Adjust the size range as needed
-    enemy.style.width = enemySize + 'px';
-    enemy.style.height = 'auto';
+    var enemySize = (Math.random() * 20) + 10; // Adjust the size range as needed
+    enemy.style.width = enemySize + '%';
+    enemy.style.height = enemy.style.width;
 
     // Varying speed based on the current score 
     var enemyLeft = Math.random() * (game.offsetWidth - enemySize);
@@ -108,20 +108,17 @@ function isColliding(div1, div2) {
     var rect1 = div1.getBoundingClientRect();
     var rect2 = div2.getBoundingClientRect();
 
-    return !(rect1.right < rect2.left+50 ||
-             rect1.left > rect2.right-50 ||
-             rect1.bottom < rect2.top-50 ||
-             rect1.top > rect2.bottom-15);
+    return !(rect1.right < rect2.left+rect2.left*0.15 ||
+             rect1.left > rect2.right-rect2.right*0.15 ||
+             rect1.bottom < rect2.top+rect2.top*0.15 ||
+             rect1.top > rect2.bottom-rect2.bottom*0.15);
 }
 
 window.addEventListener('keydown', function(event) {
-
-    var left = player.offsetLeft; // Change this value to make the player move faster or slower
-
     if (event.key === 'ArrowLeft') {
-        player.style.left = Math.max(left - player_speed, 0) + 'px';  // Move left
+        speed = -2.5;  // Move left
     } else if (event.key === 'ArrowRight') {
-        player.style.left = Math.min(left + player_speed, game.offsetWidth - player.offsetWidth) + 'px';  // Move right
+        speed = 2.5;  // Move right
     }
 });
 
@@ -131,7 +128,7 @@ window.addEventListener('keyup', function(event) {
     }
 });
 
-function animate() {
+function animate() { //animate function
     var left = player.offsetLeft;
     player.style.left = Math.max(Math.min(left + speed, game.offsetWidth - player.offsetWidth), 0) + 'px';
     requestAnimationFrame(animate);
