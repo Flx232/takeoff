@@ -41,13 +41,6 @@ body{
     height:auto;
 }
 
-.star {
-    position: absolute;
-    width: 10px;
-    height: 30px;
-    background: url('star.png');
-}
-
 #overlay {
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
