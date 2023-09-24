@@ -15,7 +15,6 @@ var player_speed = 2.5;
 function createEnemy() {
     var enemy = document.createElement('div');
     var enemy_speed_mult = star_speed_mult = 1;
-    var blink = false;
     enemy.classList.add('enemy');
     game.appendChild(enemy);
 
@@ -24,45 +23,29 @@ function createEnemy() {
     star.classList.add('star');
     star.style.left = Math.random() * 350 + 'px';
     game.appendChild(star);
-
-    var speed = Math.random() * 2 * enemy_speed_mult + 1;
-    var starSpeed = Math.random() * 1 * star_speed_mult + 1;
   
     // Varying size based on the current score
     var enemySize = (Math.random() * 20) + 25; // Adjust the size range as needed
     enemy.style.width = enemySize + 'px';
     enemy.style.height = enemySize + 'px';
 
-    // Varying speed based on the current score
-    if (enemySpeedMult != 5){
-        enemySpeedMult = 1 + (score / 50); // Adjust the speed increase rate as needed
-    }
+    // Varying speed based on the current score 
     var enemyLeft = Math.random() * (game.offsetWidth - enemySize);
     enemy.style.left = enemyLeft + 'px';
-
-    
-    if (score >= prevScore + 10){
-        enemy_speed_mult += 4;
-        star_speed_mult += 2;
-        spawn -= 5;
-        // player_speed += 0.1;
-        clearInterval(eIntervalId);
-        eIntervalId = null;
-        eIntervalId = setInterval(createEnemy,spawn);
-    }
     
     function step() {
-        var speed = Math.random() * 2 * enemySpeedMult + 1;
+        var speed = Math.random() * 2 * enemy_speed_mult + 1;
+        var starSpeed = Math.random() * 1 * star_speed_mult + 1;
         enemy.style.top = (enemy.offsetTop + speed) + 'px';
         star.style.top = (star.offsetTop + starSpeed) + 'px';
         if(!lose){
+            if(star.offsetTop > game.offsetHeight){
+                star.remove();
+            }
             if (enemy.offsetTop > game.offsetHeight) {
                 enemy.remove();
                 score++;
                 scoreElement.textContent = score;
-            }
-            if(star.offsetTop > game.offsetHeight){
-                star.remove();
             }
             if (!isColliding(player, enemy)) {
                 requestAnimationFrame(step);
@@ -70,11 +53,16 @@ function createEnemy() {
                 lose = true;
             }
         }
-        if (score >= prevScore + 50)
+        if (score >= prevScore + 15)
             {
                 prevScore = score;
                 level++;
                 levelElement.textContent = "LEVEL: " + level;
+                enemy_speed_mult += 8;
+                star_speed_mult += 2;
+                clearInterval(eIntervalId);
+                eIntervalId = null;
+                eIntervalId = setInterval(createEnemy,spawn - 25 * (level -1));
             }
     }
  
@@ -97,6 +85,8 @@ if(lose){
 }
 
 function on() {
+    document.getElementById('modal-level-value').textContent = level;
+    document.getElementById('modal-score').textContent = score;
     document.getElementById("overlay").style.display = "block";
 }
 
